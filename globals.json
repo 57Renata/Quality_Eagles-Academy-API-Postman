@@ -1,0 +1,159 @@
+{
+	"id": "a2e8f402-d30f-49a5-8675-8ee0c71b7675",
+	"values": [
+		{
+			"key": "msgdepartment@#",
+			"value": "O campo 'departamento' só pode conter letras e o caractere especial '&'.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgdepartamentoembranco",
+			"value": "O campo 'departamento' é obrigatório.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgdepartment111",
+			"value": "O campo 'departamento' só pode conter letras e o caractere especial '&'.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgdiretoriaembranco",
+			"value": "O campo 'diretoria' é obrigatório.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgdiretoria@#",
+			"value": "O campo 'diretoria' só pode conter letras e o caractere especial '&'.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgdiretoria12",
+			"value": "O campo 'diretoria' só pode conter letras e o caractere especial '&'.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Password",
+			"value": "1234@Test",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "msgfullNameembranco",
+			"value": "O campo nome completo é obrigatório.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgFullName101",
+			"value": "O nome completo deve ter no máximo 100 caracteres.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgfullNamecomnumeros",
+			"value": "O campo nome completo não deve conter números",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgfullNamecaracters@",
+			"value": "Informe o nome e sobrenome com as iniciais em letra maiúscula e sem caracteres especiais.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgEmailembranco",
+			"value": "O campo e-mail é obrigatório.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgEmailinvalido",
+			"value": "O e-mail informado é inválido. Informe um e-mail no formato [nome@domínio.com].",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgfullNameprimeironome",
+			"value": "Informe o nome e sobrenome com as iniciais em letra maiúscula e sem caracteres especiais.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgEmailcomespaço",
+			"value": "O e-mail informado é inválido. Informe um e-mail no formato [nome@domínio.com].",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgSenhabranco",
+			"value": "O campo senha é obrigatório",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgsenha7caracteres",
+			"value": "Senha precisa ter: uma letra maiúscula, uma letra minúscula, um número, um caractere especial(@#$%) e tamanho entre 8-12.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgsenha13caractesres",
+			"value": "Senha precisa ter: uma letra maiúscula, uma letra minúscula, um número, um caractere especial(@#$%) e tamanho entre 8-12.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgsenhanumero",
+			"value": "Senha precisa ter: uma letra maiúscula, uma letra minúscula, um número, um caractere especial(@#$%) e tamanho entre 8-12.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgsenhacaracters@#",
+			"value": "Senha precisa ter: uma letra maiúscula, uma letra minúscula, um número, um caractere especial(@#$%) e tamanho entre 8-12.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgconfirmarsenhadiferente",
+			"value": "As senhas não coincidem.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgconfirmarsenhabranco",
+			"value": "O campo de confirmação de senha é obrigatório.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgperfilacessobranco",
+			"value": "O campo perfil de acesso é obrigatório.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgcpfobrigatorio",
+			"value": "O campo CPF é obrigatório!",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "msgcpf12nemeros",
+			"value": "Deve preencher o CPF com 11 dígitos",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2024-05-15T13:51:11.743Z",
+	"_postman_exported_using": "Postman/11.1.1"
+}

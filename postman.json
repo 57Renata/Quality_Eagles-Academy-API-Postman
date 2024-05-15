@@ -1,0 +1,279 @@
+{
+	"id": "d390350c-b4bc-467d-9904-103fc08c3f84",
+	"name": "Post.2",
+	"values": [
+		{
+			"key": "url",
+			"value": "https://quality-eagles.qacoders-academy.com.br/api",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tokenSysAdmin",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "tokenUser",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Department",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "costCenterId",
+			"value": "658ae3f40f617abe798fd68f",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "MAIÚSCULAS",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "minúsculas",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Department&",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgdepartment@#",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgdepartamentoembranco",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgdepartment111",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "board",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "BOARD",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "board&",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgboard@#",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgdiretoria@#",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgdiretoriaembranco",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgdiretoria",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgdiretoria12",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "FirstName",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "LastName",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "FullName",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "AccessProfile",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "ProviderMail",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Mail",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "CPF",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgfullNameembranco",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgFullName101",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgfullNamecomnumeros",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgfullNamecaracters@",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgEmailembranco",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgEmailinvalido",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgfullNameprimeironome",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgEmailcomespaço",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgSenhabranco",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgsenha7caracteres",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgsenha13caractesres",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgsenhanumero",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgsenhacaracters@#",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgconfirmarsenhadiferente",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgconfirmarsenhabranco",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgperfilacessobranco",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgcpfobrigatorio",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "_msgcpf12nemeros",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-05-15T13:50:37.002Z",
+	"_postman_exported_using": "Postman/11.1.1"
+}

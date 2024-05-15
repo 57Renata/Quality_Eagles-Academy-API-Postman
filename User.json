@@ -1,0 +1,3832 @@
+{
+	"info": {
+		"_postman_id": "e572e77d-5220-4236-b871-213e1391e6bb",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25621200"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('tokenSysAdmin', pm.response.json().token);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"sysadmin@qacoders.com\",\r\n    \"password\": \"1234@Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar usuário do login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									" \r",
+									"    let firstName = [\"William\",\"Melissa\",\"Pablo\",\"JoaoVitor\",\"Vitor\",\"Hugo\",\"Arthur\",\"Maxon\",\"Maelle\",\"Maerica\",\"Ammy\",\"Coraline\",\"Juca\",\"Lucas\",\"Fernando\",\"Fernanda\",\"Angelica\",\"Laura\",\"Larissa\",\"Sterfane\",\"Stella\",\"Daniele\",\"Brenda\",\"Beatriz\",\"Juliene\",\"Julieta\",\"Maxine\",\"Maria\",\"Merie\",\"Tatiane\",\"Jucelino\",\"Vanderson\",\"Valon\",\"Vanessa\",\"Vannessa\",\"Villany\",\"Cassia\",\"Cassiano\",\"Bento\",\"Bianca\",\"Lucinda\",\"Jucelia\",\"Jucileia\",\"Pedro\",\"Carla\",\"Raissa\",\"Cassandra\",\"Sara\",\"Jussara\",\"Cecilia\",\"Samilly\",\"Sanny\",\"Luara\",\"Cesar\",\"Vinicios\",\"Ramon\",\"Hayton\",\"JoaoHerbet\",\"Wendy\",\"Layra\",\"Carlos\",\"Daniel\",\"Hamillet\",\"Romeu\",\"Kaio\",\"Clara\",];\r",
+									" \r",
+									" \r",
+									"    let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									"    \r",
+									"}\r",
+									" \r",
+									"   pm.environment.set(\"FirstName\", firstName());\r",
+									" \r",
+									"function lastName() {\r",
+									" \r",
+									"    let lastName = [\"Alves\",\"Passos de Sousa\",\"Duarte Silva\",\"Irvine de Oliveira\",\"Clarck\",\"Alonso\",\"Afonso\",\"Rossi\",\"Esposito\",\"Russo\",\"Romano\",\"Brancos\",\"Ferrari\",\"Bianchi\",\"Marinho\",\"Giordano\",\"De Luca\",\"Bruno\",\"Rizzo\",\"Galo\",\"Ricci\",\"Caruso\",\"Mancini\",\"Ferrara\",\"Leão\",\"Colombo\",\"Santoro\",\"Conti\",\"Coppola\",\"Amato\",\"Bianco\",\"Vitale\",\"Lombardi\",\"Fiore\",\"Parisi\",\"De Rosa\",\"Angelo\",\"Rinaldi\",\"De Santis\",\"Lombardo\",\"Martini\",\"Longo\",\"Serra\",\"Gentile\",\"Giuseppe\",\"Sorrentino\",\"Moretti\",\"De Angelis\",\"Fontana\",\"Napoli\",\"Valenti\",\"Rossini\",\"Benedetti\",\"Manca\",\"Pinto De Martino\",\"Pugliese\",\"Natale\",\"Rosso\",\"Palma\",\"Moro\",\"Bernardi\"];\r",
+									" \r",
+									" \r",
+									"    let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									"    \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenSysAdmin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"{{Mail}}\",\r\n    \"password\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Não funcional",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('tokenSysAdmin', pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"sysadmin@qacoders.com\",\r\n    \"password\": \"1234@Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fullName em branco",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"João\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgfullNameembranco\", pm.globals.get(\"msgfullNameembranco\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O campo nome completo é obrigatório.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgfullNameembranco\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fullName com 101 caracteres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgFullName101\", pm.globals.get(\"msgFullName101\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O nome completo deve ter no máximo 100 caracteres.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgFullName101\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fullName com o primeiro nome",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgfullNameprimeironome\", pm.globals.get(\"msgfullNameprimeironome\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:Informe o nome e sobrenome com as iniciais em letra maiúscula e sem caracteres especiais.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgfullNameprimeironome\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"Renata\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fullName com números",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgfullNamecomnumeros\", pm.globals.get(\"msgfullNamecomnumeros\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O campo nome completo não deve conter números\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgfullNamecomnumeros\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"Aaaaa123654\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fullName com caracteres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgfullNamecaracters@\", pm.globals.get(\"msgfullNamecaracters@\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:Informe o nome e sobrenome com as iniciais em letra maiúscula e sem caracteres especiais.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgfullNamecaracters@\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"@@##renata\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "email em branco",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"João\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgEmailembranco\", pm.globals.get(\"msgEmailembranco\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O campo e-mail é obrigatório.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgEmailembranco\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "email inválido",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"João\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgEmailinvalido\", pm.globals.get(\"msgEmailinvalido\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O e-mail informado é inválido. Informe um e-mail no formato [nome@domínio.com].\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgEmailinvalido\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"teste.com\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "email com espaço no dominio",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"João\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgEmailcomespaço\", pm.globals.get(\"msgEmailcomespaço\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O e-mail informado é inválido. Informe um e-mail no formato [nome@domínio.com].\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgEmailcomespaço\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"teste@ teste.com\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "senha em branco",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgSenhabranco\", pm.globals.get(\"msgSenhabranco\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O campo senha é obrigatório\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgSenhabranco\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "senha com 7 caracteres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgsenha7caracteres\", pm.globals.get(\"msgsenha7caracteres\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:Senha precisa ter: uma letra maiúscula, uma letra minúscula, um número, um caractere especial(@#$%) e tamanho entre 8-12.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgsenha7caracteres\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"1234@Te\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"1234@Te\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "senha com 13 caracteres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgsenha13caractesres\", pm.globals.get(\"msgsenha13caractesres\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:Senha precisa ter: uma letra maiúscula, uma letra minúscula, um número, um caractere especial(@#$%) e tamanho entre 8-12.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgsenha13caractesres\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"1234@Testeeee\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"1234@Testeeee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "senha com números",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgsenhanumero\", pm.globals.get(\"msgsenhanumero\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:Senha precisa ter: uma letra maiúscula, uma letra minúscula, um número, um caractere especial(@#$%) e tamanho entre 8-12.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgsenhanumero\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"12345678\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "senha com caracteres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgsenhacaracters@#\", pm.globals.get(\"msgsenhacaracters@#\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:Senha precisa ter: uma letra maiúscula, uma letra minúscula, um número, um caractere especial(@#$%) e tamanho entre 8-12.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgsenhacaracters@#\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"@@@@@###\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"@@@@@###\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirmar senha diferente do campo senha",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgconfirmarsenhadiferente\", pm.globals.get(\"msgconfirmarsenhadiferente\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:As senhas não coincidem.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgconfirmarsenhadiferente\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"1234@Teste\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"1234@Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirmar senha em branco",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgconfirmarsenhabranco\", pm.globals.get(\"msgconfirmarsenhabranco\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O campo de confirmação de senha é obrigatório.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgconfirmarsenhabranco\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "perfil de acesso em branco",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgperfilacessobranco\", pm.globals.get(\"msgperfilacessobranco\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O campo perfil de acesso é obrigatório.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgperfilacessobranco\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CPF obrigatorio",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgcpfobrigatorio\", pm.globals.get(\"msgcpfobrigatorio\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:O campo CPF é obrigatório!\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgcpfobrigatorio\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CPF com 12 números",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									"\r",
+									"  let firstName = [\"William\", \"Joao\", \"Maria\", \"Pablo\", \"Mitra\", \"Carla\", \"Raissa\", \"Rodrigo\", \"Liza\", \"Adriano\", \"Gledson\"]\r",
+									"\r",
+									"let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName() {\r",
+									"\r",
+									"let lastName = [\"Alves de Sousa\", \"de Sousa\", \"Henrique de Lima\", \"Joaquim de Carvalho\", \"de Melo\", \"Silva Santos\", \"Rodrigues da Silva\", \"Henrique da Silva\", \"Pereira\", \"dos Santos\", \"de Andrade\"];\r",
+									"let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function administrador() {\r",
+									"\r",
+									"let administrador = [\"true\"];\r",
+									"let randomItem = administrador[Math.floor(Math.random() * administrador.length)];\r",
+									"\r",
+									"return randomItem\r",
+									"}\r",
+									"  \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"pm.environment.set(\"_msgcpf12nemeros\", pm.globals.get(\"msgcpf12nemeros\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"check msg:Deve preencher o CPF com 11 dígitos\", function(){\r",
+									"    pm.expect(pm.globals.get(\"msgcpf12nemeros\")).to.eql(JSON.parse(responseBody).error[0]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"123456789011\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Funcional",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('tokenSysAdmin', pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"sysadmin@qacoders.com\",\r\n    \"password\": \"1234@Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fullName com 100",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fullName com nome e sobrenome",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function firstName() {\r",
+									" \r",
+									"    let firstName = [\"William\",\"Melissa\",\"Pablo\",\"JoaoVitor\",\"Vitor\",\"Hugo\",\"Arthur\",\"Maxon\",\"Maelle\",\"Maerica\",\"Ammy\",\"Coraline\",\"Juca\",\"Lucas\",\"Fernando\",\"Fernanda\",\"Angelica\",\"Laura\",\"Larissa\",\"Sterfane\",\"Stella\",\"Daniele\",\"Brenda\",\"Beatriz\",\"Juliene\",\"Julieta\",\"Maxine\",\"Maria\",\"Merie\",\"Tatiane\",\"Jucelino\",\"Vanderson\",\"Valon\",\"Vanessa\",\"Vannessa\",\"Villany\",\"Cassia\",\"Cassiano\",\"Bento\",\"Bianca\",\"Lucinda\",\"Jucelia\",\"Jucileia\",\"Pedro\",\"Carla\",\"Raissa\",\"Cassandra\",\"Sara\",\"Jussara\",\"Cecilia\",\"Samilly\",\"Sanny\",\"Luara\",\"Cesar\",\"Vinicios\",\"Ramon\",\"Hayton\",\"JoaoHerbet\",\"Wendy\",\"Layra\",\"Carlos\",\"Daniel\",\"Hamillet\",\"Romeu\",\"Kaio\",\"Clara\",];\r",
+									" \r",
+									" \r",
+									"    let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									"    \r",
+									"}\r",
+									" \r",
+									"   pm.environment.set(\"FirstName\", firstName());\r",
+									" \r",
+									"function lastName() {\r",
+									" \r",
+									"   let lastName = [\"Alves\",\"Passos de Sousa\",\"Duarte Silva\",\"Irvine de Oliveira\",\"Clarck\",\"Alonso\",\"Afonso\",\"Rossi\",\"Esposito\",\"Russo\",\"Romano\",\"Brancos\",\"Ferrari\",\"Bianchi\",\"Marinho\",\"Giordano\",\"De Luca\",\"Bruno\",\"Rizzo\",\"Galo\",\"Ricci\",\"Caruso\",\"Mancini\",\"Ferrara\",\"Leão\",\"Colombo\",\"Santoro\",\"Conti\",\"Coppola\",\"Amato\",\"Bianco\",\"Vitale\",\"Lombardi\",\"Fiore\",\"Parisi\",\"De Rosa\",\"Angelo\",\"Rinaldi\",\"De Santis\",\"Lombardo\",\"Martini\",\"Longo\",\"Serra\",\"Gentile\",\"Giuseppe\",\"Sorrentino\",\"Moretti\",\"De Angelis\",\"Fontana\",\"Napoli\",\"Valenti\",\"Rossini\",\"Benedetti\",\"Manca\",\"Pinto De Martino\",\"Pugliese\",\"Natale\",\"Rosso\",\"Palma\",\"Moro\",\"Bernardi\"];\r",
+									" \r",
+									" \r",
+									"    let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									"    \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									" \r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "senha 8 caracteres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									" \r",
+									"function firstName() {\r",
+									" \r",
+									"    let firstName = [\"William\",\"Melissa\",\"Pablo\",\"JoaoVitor\",\"Vitor\",\"Hugo\",\"Arthur\",\"Maxon\",\"Maelle\",\"Maerica\",\"Ammy\",\"Coraline\",\"Juca\",\"Lucas\",\"Fernando\",\"Fernanda\",\"Angelica\",\"Laura\",\"Larissa\",\"Sterfane\",\"Stella\",\"Daniele\",\"Brenda\",\"Beatriz\",\"Juliene\",\"Julieta\",\"Maxine\",\"Maria\",\"Merie\",\"Tatiane\",\"Jucelino\",\"Vanderson\",\"Valon\",\"Vanessa\",\"Vannessa\",\"Villany\",\"Cassia\",\"Cassiano\",\"Bento\",\"Bianca\",\"Lucinda\",\"Jucelia\",\"Jucileia\",\"Pedro\",\"Carla\",\"Raissa\",\"Cassandra\",\"Sara\",\"Jussara\",\"Cecilia\",\"Samilly\",\"Sanny\",\"Luara\",\"Cesar\",\"Vinicios\",\"Ramon\",\"Hayton\",\"JoaoHerbet\",\"Wendy\",\"Layra\",\"Carlos\",\"Daniel\",\"Hamillet\",\"Romeu\",\"Kaio\",\"Clara\",];\r",
+									" \r",
+									" \r",
+									"    let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									"    \r",
+									"}\r",
+									" \r",
+									"   pm.environment.set(\"FirstName\", firstName());\r",
+									" \r",
+									"function lastName() {\r",
+									" \r",
+									"    let lastName = [\"Alves\",\"Passos de Sousa\",\"Duarte Silva\",\"Irvine de Oliveira\",\"Clarck\",\"Alonso\",\"Afonso\",\"Rossi\",\"Esposito\",\"Russo\",\"Romano\",\"Brancos\",\"Ferrari\",\"Bianchi\",\"Marinho\",\"Giordano\",\"De Luca\",\"Bruno\",\"Rizzo\",\"Galo\",\"Ricci\",\"Caruso\",\"Mancini\",\"Ferrara\",\"Leão\",\"Colombo\",\"Santoro\",\"Conti\",\"Coppola\",\"Amato\",\"Bianco\",\"Vitale\",\"Lombardi\",\"Fiore\",\"Parisi\",\"De Rosa\",\"Angelo\",\"Rinaldi\",\"De Santis\",\"Lombardo\",\"Martini\",\"Longo\",\"Serra\",\"Gentile\",\"Giuseppe\",\"Sorrentino\",\"Moretti\",\"De Angelis\",\"Fontana\",\"Napoli\",\"Valenti\",\"Rossini\",\"Benedetti\",\"Manca\",\"Pinto De Martino\",\"Pugliese\",\"Natale\",\"Rosso\",\"Palma\",\"Moro\",\"Bernardi\"];\r",
+									" \r",
+									" \r",
+									"    let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									"    \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"133Rme@#\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"133Rme@#\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "senha 12 caracteres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									" \r",
+									"function firstName() {\r",
+									" \r",
+									"    let firstName = [\"William\",\"Melissa\",\"Pablo\",\"JoaoVitor\",\"Vitor\",\"Hugo\",\"Arthur\",\"Maxon\",\"Maelle\",\"Maerica\",\"Ammy\",\"Coraline\",\"Juca\",\"Lucas\",\"Fernando\",\"Fernanda\",\"Angelica\",\"Laura\",\"Larissa\",\"Sterfane\",\"Stella\",\"Daniele\",\"Brenda\",\"Beatriz\",\"Juliene\",\"Julieta\",\"Maxine\",\"Maria\",\"Merie\",\"Tatiane\",\"Jucelino\",\"Vanderson\",\"Valon\",\"Vanessa\",\"Vannessa\",\"Villany\",\"Cassia\",\"Cassiano\",\"Bento\",\"Bianca\",\"Lucinda\",\"Jucelia\",\"Jucileia\",\"Pedro\",\"Carla\",\"Raissa\",\"Cassandra\",\"Sara\",\"Jussara\",\"Cecilia\",\"Samilly\",\"Sanny\",\"Luara\",\"Cesar\",\"Vinicios\",\"Ramon\",\"Hayton\",\"JoaoHerbet\",\"Wendy\",\"Layra\",\"Carlos\",\"Daniel\",\"Hamillet\",\"Romeu\",\"Kaio\",\"Clara\",];\r",
+									" \r",
+									" \r",
+									"    let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									"    \r",
+									"}\r",
+									" \r",
+									"   pm.environment.set(\"FirstName\", firstName());\r",
+									" \r",
+									"function lastName() {\r",
+									" \r",
+									"    let lastName = [\"Alves\",\"Passos de Sousa\",\"Duarte Silva\",\"Irvine de Oliveira\",\"Clarck\",\"Alonso\",\"Afonso\",\"Rossi\",\"Esposito\",\"Russo\",\"Romano\",\"Brancos\",\"Ferrari\",\"Bianchi\",\"Marinho\",\"Giordano\",\"De Luca\",\"Bruno\",\"Rizzo\",\"Galo\",\"Ricci\",\"Caruso\",\"Mancini\",\"Ferrara\",\"Leão\",\"Colombo\",\"Santoro\",\"Conti\",\"Coppola\",\"Amato\",\"Bianco\",\"Vitale\",\"Lombardi\",\"Fiore\",\"Parisi\",\"De Rosa\",\"Angelo\",\"Rinaldi\",\"De Santis\",\"Lombardo\",\"Martini\",\"Longo\",\"Serra\",\"Gentile\",\"Giuseppe\",\"Sorrentino\",\"Moretti\",\"De Angelis\",\"Fontana\",\"Napoli\",\"Valenti\",\"Rossini\",\"Benedetti\",\"Manca\",\"Pinto De Martino\",\"Pugliese\",\"Natale\",\"Rosso\",\"Palma\",\"Moro\",\"Bernardi\"];\r",
+									" \r",
+									" \r",
+									"    let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									"    \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									" \r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function accessProfile() {\r",
+									" \r",
+									"    let accessProfile = [\"ADMIN\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									" \r",
+									"function providerMail() {\r",
+									" \r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									" \r",
+									"      return randomItem;\r",
+									" \r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+									" \r",
+									"function cpf() {\r",
+									"    let cpf = '';\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        cpf += Math.floor(Math.random() * 10);\r",
+									"    }\r",
+									" \r",
+									"    let sum = 0;\r",
+									"    let weight = 10;\r",
+									" \r",
+									"    for (let i = 0; i < 9; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit1 = 11 - (sum % 11);\r",
+									"    if (digit1 === 10 || digit1 === 11) {\r",
+									"        digit1 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit1;\r",
+									" \r",
+									"    sum = 0;\r",
+									"    weight = 11;\r",
+									" \r",
+									"    for (let i = 0; i < 10; i++) {\r",
+									"        sum += parseInt(cpf[i]) * weight;\r",
+									"        weight--;\r",
+									"    }\r",
+									" \r",
+									"    let digit2 = 11 - (sum % 11);\r",
+									"    if (digit2 === 10 || digit2 === 11) {\r",
+									"        digit2 = 0;\r",
+									"    }\r",
+									" \r",
+									"    cpf += digit2;\r",
+									" \r",
+									"    return cpf;\r",
+									"}\r",
+									" \r",
+									"pm.environment.set(\"CPF\", cpf());\r",
+									" \r",
+									"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"133Rme@#212m\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"133Rme@#212m\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "count-contagem de usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenSysAdmin}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/user/count",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set('tokenSysAdmin', pm.response.json().token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mail\": \"sysadmin@qacoders.com\",\r\n    \"password\": \"1234@Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function firstName() {\r",
+							" \r",
+							"    let firstName = [\"William\",\"Melissa\",\"Pablo\",\"JoaoVitor\",\"Vitor\",\"Hugo\",\"Arthur\",\"Maxon\",\"Maelle\",\"Maerica\",\"Ammy\",\"Coraline\",\"Juca\",\"Lucas\",\"Fernando\",\"Fernanda\",\"Angelica\",\"Laura\",\"Larissa\",\"Sterfane\",\"Stella\",\"Daniele\",\"Brenda\",\"Beatriz\",\"Juliene\",\"Julieta\",\"Maxine\",\"Maria\",\"Merie\",\"Tatiane\",\"Jucelino\",\"Vanderson\",\"Valon\",\"Vanessa\",\"Vannessa\",\"Villany\",\"Cassia\",\"Cassiano\",\"Bento\",\"Bianca\",\"Lucinda\",\"Jucelia\",\"Jucileia\",\"Pedro\",\"Carla\",\"Raissa\",\"Cassandra\",\"Sara\",\"Jussara\",\"Cecilia\",\"Samilly\",\"Sanny\",\"Luara\",\"Cesar\",\"Vinicios\",\"Ramon\",\"Hayton\",\"JoaoHerbet\",\"Wendy\",\"Layra\",\"Carlos\",\"Daniel\",\"Hamillet\",\"Romeu\",\"Kaio\",\"Clara\",];\r",
+							" \r",
+							" \r",
+							"    let randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+							" \r",
+							"      return randomItem;\r",
+							"    \r",
+							"}\r",
+							" \r",
+							"   pm.environment.set(\"FirstName\", firstName());\r",
+							" \r",
+							"function lastName() {\r",
+							" \r",
+							"    let lastName = [\"Alves\",\"Passos de Sousa\",\"Duarte Silva\",\"Irvine de Oliveira\",\"Clarck\",\"Alonso\",\"Afonso\",\"Rossi\",\"Esposito\",\"Russo\",\"Romano\",\"Brancos\",\"Ferrari\",\"Bianchi\",\"Marinho\",\"Giordano\",\"De Luca\",\"Bruno\",\"Rizzo\",\"Galo\",\"Ricci\",\"Caruso\",\"Mancini\",\"Ferrara\",\"Leão\",\"Colombo\",\"Santoro\",\"Conti\",\"Coppola\",\"Amato\",\"Bianco\",\"Vitale\",\"Lombardi\",\"Fiore\",\"Parisi\",\"De Rosa\",\"Angelo\",\"Rinaldi\",\"De Santis\",\"Lombardo\",\"Martini\",\"Longo\",\"Serra\",\"Gentile\",\"Giuseppe\",\"Sorrentino\",\"Moretti\",\"De Angelis\",\"Fontana\",\"Napoli\",\"Valenti\",\"Rossini\",\"Benedetti\",\"Manca\",\"Pinto De Martino\",\"Pugliese\",\"Natale\",\"Rosso\",\"Palma\",\"Moro\",\"Bernardi\"];\r",
+							" \r",
+							" \r",
+							"    let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+							" \r",
+							"      return randomItem;\r",
+							"    \r",
+							"}\r",
+							" \r",
+							"pm.environment.set(\"LastName\", lastName());\r",
+							" \r",
+							"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+							"\r",
+							"function accessProfile() {\r",
+							" \r",
+							"    let accessProfile = [\"ADMIN\"];\r",
+							"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+							" \r",
+							"      return randomItem;\r",
+							" \r",
+							"}\r",
+							"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+							" \r",
+							"function providerMail() {\r",
+							" \r",
+							"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\",\"@outlook.com\",\"@hotmail.com\",\"@uol.com.br\"];\r",
+							"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+							" \r",
+							"      return randomItem;\r",
+							" \r",
+							"}\r",
+							" \r",
+							"pm.environment.set(\"ProviderMail\", providerMail());\r",
+							"pm.environment.set(\"Mail\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') + pm.environment.get(\"ProviderMail\"));\r",
+							" \r",
+							"function cpf() {\r",
+							"    let cpf = '';\r",
+							" \r",
+							"    for (let i = 0; i < 9; i++) {\r",
+							"        cpf += Math.floor(Math.random() * 10);\r",
+							"    }\r",
+							" \r",
+							"    let sum = 0;\r",
+							"    let weight = 10;\r",
+							" \r",
+							"    for (let i = 0; i < 9; i++) {\r",
+							"        sum += parseInt(cpf[i]) * weight;\r",
+							"        weight--;\r",
+							"    }\r",
+							" \r",
+							"    let digit1 = 11 - (sum % 11);\r",
+							"    if (digit1 === 10 || digit1 === 11) {\r",
+							"        digit1 = 0;\r",
+							"    }\r",
+							" \r",
+							"    cpf += digit1;\r",
+							" \r",
+							"    sum = 0;\r",
+							"    weight = 11;\r",
+							" \r",
+							"    for (let i = 0; i < 10; i++) {\r",
+							"        sum += parseInt(cpf[i]) * weight;\r",
+							"        weight--;\r",
+							"    }\r",
+							" \r",
+							"    let digit2 = 11 - (sum % 11);\r",
+							"    if (digit2 === 10 || digit2 === 11) {\r",
+							"        digit2 = 0;\r",
+							"    }\r",
+							" \r",
+							"    cpf += digit2;\r",
+							" \r",
+							"    return cpf;\r",
+							"}\r",
+							" \r",
+							"pm.environment.set(\"CPF\", cpf());\r",
+							" \r",
+							"pm.variables.set(\"_Password\", pm.globals.get(\"Password\"))\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenSysAdmin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Mail}}\",\r\n  \"password\": \"{{_Password}}\",\r\n  \"accessProfile\": \"{{AccessProfile}}\",\r\n  \"cpf\": \"{{CPF}}\",\r\n  \"confirmPassword\": \"{{_Password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{tokenSysAdmin}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
