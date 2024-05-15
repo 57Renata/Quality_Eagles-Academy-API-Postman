@@ -30,7 +30,7 @@ jobs:
  
  
       - name: Step 3 Execute collection
-        run: newman run ./Auth.json -e ./QA.json -g ./globals.json -r htmlextra --reporter-htmlextra-export ./result_Auth/report.html
+        run: newman run ./Auth.json -e ./postman.json -g ./globals.json -r htmlextra --reporter-htmlextra-export ./result_Auth/report.html
  
       - name: Step 4 Archive production artifacts
         uses: actions/upload-artifact@v4

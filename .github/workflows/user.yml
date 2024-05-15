@@ -28,7 +28,7 @@ jobs:
         run: npm install -g newman-reporter-htmlextra
  
       - name: Step 3 Execute collection
-        run: newman run ./User.json -e ./QA.json -g ./globals.json -r htmlextra --reporter-htmlextra-export ./result_User/report.html
+        run: newman run ./User.json -e ./postman.json -g ./globals.json -r htmlextra --reporter-htmlextra-export ./result_User/report.html
  
       - name: Step 4 Archive production artifacts
         uses: actions/upload-artifact@v4
