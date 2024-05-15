@@ -12,11 +12,13 @@ Squad Quality Eagles
 - newman
  
 ### Instalando as dependencias
-  npm install -g newman
+```bash
+   npm install -g newman
   npm install -g newman-reporter-htmlextra
  
 ```
-Execução com Newman
+ 
+## Execução com Newman
  
 ```bash
 newman run user.json -e postman.json -g globals.json
